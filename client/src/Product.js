@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ORDERS_API_URL } from "./api";
 
 import a1 from "./img/img1.jpg";
 import a2 from "./img/img2.jpg";
@@ -38,7 +39,7 @@ function Product() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/api/orders", form);
+      await axios.post(ORDERS_API_URL, form);
       alert("Order Submitted Successfully!");
 
       setForm({
