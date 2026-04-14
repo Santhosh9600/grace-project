@@ -6,7 +6,12 @@ const Order = require("./models/Order");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin:[ "http://localhost:3000",
+      "https://grace-project.vercel.app/"
+    ],
+    methods: ["PUT", "GET", "POST", "DELETE"]
+}));
 app.use(express.json());
 
 /* ---------------- MONGODB CONNECT ---------------- */
