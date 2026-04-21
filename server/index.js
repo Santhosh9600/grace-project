@@ -6,11 +6,20 @@ const Order = require("./models/Order");
 
 const app = express();
 
+const allowedOrigins = new Set([
+  "http://localhost:3000",
+  "https://grace-project.vercel.app",
+]);
+
 app.use(cors({
-    origin:[ "http://localhost:3000",
-      "https://grace-project.vercel.app/"
-    ],
-    methods: ["PUT", "GET", "POST", "DELETE"]
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.has(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("Not allowed by CORS"));
+  },
+  methods: ["PUT", "GET", "POST", "DELETE"],
 }));
 app.use(express.json());
 

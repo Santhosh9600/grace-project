@@ -30,6 +30,7 @@ function Product() {
     product: "",
     quantity: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -37,9 +38,26 @@ function Product() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const payload = {
+      username: form.username.trim(),
+      mobile: form.mobile.trim(),
+      product: form.product.trim(),
+      quantity: Number(form.quantity)
+    };
+
+    if (!payload.username || !payload.mobile || !payload.product || !form.quantity) {
+      alert("Please fill in all fields before submitting.");
+      return;
+    }
+
+    if (Number.isNaN(payload.quantity) || payload.quantity <= 0) {
+      alert("Please enter a valid quantity greater than 0.");
+      return;
+    }
 
     try {
-      await axios.post(ORDERS_API_URL, form);
+      setIsSubmitting(true);
+      await axios.post(ORDERS_API_URL, payload);
       alert("Order Submitted Successfully!");
 
       setForm({
@@ -51,8 +69,14 @@ function Product() {
 
       navigate("/users");
     } catch (error) {
-      console.log(error);
-      alert("Error submitting order");
+      console.log("Order submission failed:", error);
+      alert(
+        error.response?.data?.error ||
+        error.message ||
+        "Error submitting order"
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -161,8 +185,12 @@ function Product() {
                   </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-pill w-100 mt-4">
-                  Submit Order
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-pill w-100 mt-4"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Submit Order"}
                 </button>
               </form>
             </div>
