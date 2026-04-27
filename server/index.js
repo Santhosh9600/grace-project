@@ -23,13 +23,15 @@ app.use(cors({
 }));
 app.use(express.json());
 
-/* ---------------- MONGODB CONNECT ---------------- */
+// Mongodb connect
+
 mongoose
   .connect("mongodb+srv://user:user@cluster0.0rmgbcc.mongodb.net/loginDB")
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("MongoDB Error:", err));
 
-/* ---------------- USER MODEL ---------------- */
+// User model
+
 const UserSchema = new mongoose.Schema({
   username: String,
   password: String,
@@ -39,7 +41,8 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", UserSchema);
 
-/* ---------------- ORDER APIs ---------------- */
+// Order api
+
 app.post("/api/orders", async (req, res) => {
   try {
     const newOrder = new Order(req.body);
@@ -115,7 +118,8 @@ app.delete("/api/orders/:id", async (req, res) => {
   }
 });
 
-/* ---------------- SERVER START ---------------- */
+// Server start
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
