@@ -10,6 +10,7 @@ import a4 from "./img/img4.jpg";
 import a5 from "./img/img5.jpg";
 import a6 from "./img/img6.jpg";
 import a7 from "./img/img7.jpg";
+import a8 from "./img/img8.jpg";
 
 function Product() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function Product() {
     { name: "Honed Tubes", image: a5, tag: "Precision internal finishing" },
     { name: "Hard Chrome Rods", image: a6, tag: "Wear-resistant surfaces" },
     { name: "Custom Systems", image: a7, tag: "Application-specific builds" },
-    { name: "Integrated Assemblies", image: a2, tag: "Multi-component solutions" }
+    { name: "Integrated Assemblies", image: a8, tag: "Multi-component solutions" }
   ];
 
   const [form, setForm] = useState({
