@@ -98,7 +98,7 @@ function Home() {
 
       <section className="section-block section-surface">
         <div className="container">
-          <div className="row align-items-center g-5">
+          <div className="row align-items-center g-5 mx-0">
             <div className="col-lg-6">
               <div className="image-frame">
                 <img
