@@ -20,15 +20,25 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  width: 100%;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at top left, rgba(242, 165, 65, 0.16), transparent 28%),
     linear-gradient(180deg, #fcfaf5 0%, #f3efe7 100%);
   color: var(--ink);
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
 }
 
 a {
@@ -56,9 +66,11 @@ a {
 
 .brand-lockup {
   color: #fff;
+  min-width: 0;
 }
 
 .brand-logo {
+  flex: 0 0 auto;
   object-fit: cover;
   border: 2px solid rgba(255, 255, 255, 0.24);
 }
@@ -401,6 +413,7 @@ a {
 .product-card img {
   width: 100%;
   height: 210px;
+  object-fit: cover;
 }
 
 .product-card-body {
@@ -428,6 +441,11 @@ a {
 
 .table-panel {
   padding: 1rem;
+  overflow: hidden;
+}
+
+.table-responsive {
+  border-radius: calc(var(--radius-lg) - 8px);
 }
 
 .admin-table thead th {
@@ -441,6 +459,15 @@ a {
   padding: 1rem 0.8rem;
   border-color: rgba(20, 33, 61, 0.08);
   vertical-align: middle;
+  word-break: break-word;
+}
+
+.admin-table input {
+  width: 100%;
+  min-width: 120px;
+  border: 1px solid rgba(20, 33, 61, 0.14);
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
 }
 
 .admin-table tbody tr:hover {
@@ -502,9 +529,8 @@ a {
   padding: 40px 30px;
   border-radius: 10px;
   box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
-  width: 400px;
-  margin-left: 36%;
-  margin-top: 120px;
+  width: min(400px, calc(100% - 32px));
+  margin: 120px auto 40px;
   background-color: #fff;
 }
 
@@ -524,7 +550,8 @@ a {
 
 .input-group {
   margin-bottom: 20px;
- margin-left: 10px;
+  margin-left: 0;
+  width: 100%;
 }
 
 .input-group label {
@@ -544,14 +571,14 @@ a {
 .button {
   width: 100%;
   padding: 12px;
-   background:#5bbf9a; 
+  background:#5bbf9a; 
   border: none;
   color: #fff;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
-  margin-left: 10px;
+  margin-left: 0;
 }
 
 .button:hover {
@@ -573,35 +600,304 @@ a {
   text-decoration: underline;
 }
 
-
-
-@media (max-width: 991px) {
-  .nav-pillset {
-    margin-top: 1rem;
-    align-items: stretch !important;
-  }
-
-  .nav-link.nav-animate {
-    margin: 0.15rem 0;
-  }
-}
-
-@media (max-width: 767px) {
-  .hero-section {
-    min-height: auto;
+@media (max-width: 1199.98px) {
+  .section-block {
     padding: 4.5rem 0;
   }
 
-  .section-block {
-    padding: 4rem 0;
+  .stats-section {
+    padding: 1.5rem 0 4.5rem;
+  }
+
+  .cta-section {
+    padding-bottom: 4.5rem;
   }
 
   .content-panel,
+  .info-card {
+    padding: 1.75rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .site-navbar .container {
+    max-width: 100%;
+  }
+
+  .navbar-collapse {
+    padding-top: 0.9rem;
+  }
+
+  .nav-pillset {
+    align-items: stretch !important;
+    gap: 0.25rem;
+  }
+
+  .nav-link.nav-animate {
+    display: inline-block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 0.8rem 1rem !important;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding: 4.25rem 0;
+  }
+
+  .hero-panel {
+    max-width: 100%;
+    padding: 1rem 0;
+  }
+
+  .section-heading {
+    margin-bottom: 2.25rem;
+  }
+
+  .image-frame,
+  .content-panel,
+  .product-card,
+  .stats-card,
   .cta-panel {
-    padding: 1.5rem;
+    border-radius: var(--radius-md);
+  }
+
+  .section-image {
+    width: 100%;
+    max-height: 420px;
+  }
+
+  .table-panel {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    --shadow: 0 12px 28px rgba(12, 34, 59, 0.1);
+    --radius-lg: 22px;
+    --radius-md: 18px;
+  }
+
+  body {
+    background: linear-gradient(180deg, #fcfaf5 0%, #f3efe7 100%);
+  }
+
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+    margin-right: 0.7rem !important;
+  }
+
+  .brand-title {
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+  }
+
+  .brand-subtitle {
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
+  }
+
+  .hero-section {
+    padding: 3.5rem 0;
+    background:
+      linear-gradient(90deg, rgba(9, 54, 61, 0.9), rgba(9, 54, 61, 0.62)),
+      url("img/hero.avif") no-repeat center center/cover;
+  }
+
+  .hero-title {
+    font-size: clamp(2.25rem, 11vw, 3.4rem);
+  }
+
+  .hero-text,
+  .section-copy {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    gap: 0.75rem;
+  }
+
+  .hero-actions .btn,
+  .btn-pill,
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    padding: 0.85rem 1.1rem;
+    white-space: normal;
+  }
+
+  .section-block {
+    padding: 3.5rem 0;
+  }
+
+  .stats-section {
+    padding: 1rem 0 3.5rem;
+  }
+
+  .cta-section {
+    padding-bottom: 3.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.85rem, 8vw, 2.45rem);
+  }
+
+  .content-panel,
+  .info-card,
+  .product-card-body,
+  .cta-panel {
+    padding: 1.35rem;
+  }
+
+  .feature-list li {
+    align-items: flex-start;
+  }
+
+  .product-card img {
+    height: 190px;
+  }
+
+  .stats-card {
+    padding: 1.45rem 0.9rem;
+  }
+
+  .stats-card h2 {
+    font-size: 2rem;
   }
 
   .footer-title {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
+  }
+
+  .login-container {
+    margin-top: 80px;
+    padding: 32px 22px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .navbar-brand {
+    max-width: calc(100% - 64px);
+  }
+
+  .brand-lockup span {
+    min-width: 0;
+  }
+
+  .brand-title,
+  .brand-subtitle {
+    overflow-wrap: anywhere;
+  }
+
+  .section-badge {
+    max-width: 100%;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    white-space: normal;
+  }
+
+  .hero-section {
+    padding: 3rem 0;
+  }
+
+  .hero-title {
+    margin-top: 1rem;
+  }
+
+  .hero-metrics {
+    margin-top: 2rem;
+  }
+
+  .metric-card {
+    padding: 1rem;
+  }
+
+  .metric-card h3 {
+    font-size: 1.75rem;
+  }
+
+  .content-panel,
+  .info-card,
+  .product-card-body,
+  .cta-panel,
+  .mini-card {
+    padding: 1.15rem;
+  }
+
+  .product-card img {
+    height: 175px;
+  }
+
+  .order-panel .form-control,
+  .order-panel .form-select,
+  .content-panel .form-control {
+    border-radius: 12px;
+    padding: 0.8rem 0.9rem;
+  }
+
+  .table-panel {
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+    padding: 0.5rem;
+  }
+
+  .admin-table {
+    min-width: 720px;
+  }
+
+  .admin-table thead th,
+  .admin-table tbody td {
+    padding: 0.8rem 0.65rem;
+  }
+
+  .site-footer {
+    padding: 3rem 0 1.5rem;
+  }
+
+  .login-container {
+    width: calc(100% - 24px);
+    margin-top: 64px;
+    padding: 28px 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-title {
+    font-size: 0.82rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.55rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .content-panel,
+  .info-card,
+  .product-card-body,
+  .cta-panel,
+  .mini-card {
+    padding: 1rem;
   }
 }
