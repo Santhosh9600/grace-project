@@ -36,9 +36,7 @@ function Footer() {
         </div>
 
         <div className="site-footer-bottom">
-          <p className="mb-0">
-            &copy; {new Date().getFullYear()} Grace Hydro Engineers. All rights reserved.
-          </p>
+          <p className="mb-0"> &copy; {new Date().getFullYear()} Grace Hydro Engineers. All rights reserved.</p>
         </div>
       </div>
     </footer>
