@@ -128,12 +128,7 @@ function Home() {
                 <li><i className="fa-solid fa-check"></i>Trusted across multiple industries</li>
               </ul>
 
-              <button
-                className="btn btn-primary btn-pill mt-2"
-                onClick={() => navigate("/about")}
-              >
-                Learn More
-              </button>
+              <button className="btn btn-primary btn-pill mt-2" onClick={() => navigate("/about")} >Learn More</button>
             </div>
           </div>
         </div>
@@ -223,16 +218,8 @@ function Home() {
             </p>
 
             <div className="hero-actions justify-content-center">
-              <button
-                className="btn btn-light btn-lg btn-pill"
-                onClick={() => navigate("/about")}
-              >
-                <i className="fa-solid fa-phone me-2"></i>Contact Us
-              </button>
-              <button
-                className="btn btn-outline-light btn-lg btn-pill"
-                onClick={() => navigate("/product")}
-              >
+              <button className="btn btn-light btn-lg btn-pill" onClick={() => navigate("/about")}><i className="fa-solid fa-phone me-2"></i>Contact Us </button>
+              <button className="btn btn-outline-light btn-lg btn-pill" onClick={() => navigate("/product")}>
                 <i className="fa-solid fa-magnifying-glass me-2"></i>View Products
               </button>
             </div>
